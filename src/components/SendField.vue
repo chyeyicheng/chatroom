@@ -12,6 +12,7 @@
 <script setup>
 import { ref } from 'vue';
 import useMessage from '../composibles/useMessage';
+import { timestamp } from '@/firebase/config';
 const message = ref();
 
 const sendMessage = () => {
@@ -20,7 +21,7 @@ const sendMessage = () => {
     let newMessage = {
         message: message.value,
         user : 'user',
-        createdAt : new Date().toLocaleString()
+        createdAt : timestamp
     }
     useMessage(newMessage);
     message.value = '';
